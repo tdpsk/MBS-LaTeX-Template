@@ -7,10 +7,16 @@
 \title{Title of the Paper}
 \author{Max Mustermann}
 \date{December 2019}
-\renewcommand{\lecturer}{Lecturer Name}
+\renewcommand{\lecturer}{Lecturer Name} % This will become the academic
+                                        % supervisor if the "isthesis"
+                                        % flag is set to true
 \renewcommand{\papertype}{Type of the Paper}
 \renewcommand{\course}{Title of the Course}
 \renewcommand{\address}{Address of Author}
+
+% The following commands only apply to the thesis type
+\renewcommand{\degree}{Master of Business Administration}
+\renewcommand{\supervisor}{Max Supervisor}
 
 % Conditionals for switching some indices of the template on or off.
 % Note that the corresponding commands (except \abbreviation) will still
@@ -29,4 +35,8 @@
 \global\toggletrue{useabstract}
 \global\togglefalse{useappendices}
 \global\togglefalse{usestatutory}
+\global\toggletrue{isthesis} % if this is set to true, the paper will
+                              % be treated as a thesis, which changes
+                              % the title page. The following commands
+                              % will become irrelevant: 
 \end{document}

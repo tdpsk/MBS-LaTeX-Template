@@ -5,7 +5,12 @@
 
 \begin{document}
 \subfile{content/config.tex}
-\subfile{includes/title.tex}
+\iftoggle{isthesis}{
+    \subfile{includes/title_thesis.tex}
+}{
+    \subfile{includes/title.tex}
+}
+
 
 \iftoggle{useabstract}{
     \subfile{content/abstract.tex}
