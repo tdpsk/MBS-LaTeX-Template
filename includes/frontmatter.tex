@@ -1,0 +1,28 @@
+\documentclass[document.tex]{subfiles}
+\begin{document}
+\begin{singlespacing}
+\tableofcontents\newpage
+\end{singlespacing}
+
+\iftoggle{indexfigures}{
+    \addcontentsline{toc}{section}{\indexfiguresname}
+    \listoffigures\newpage
+}{}
+
+\iftoggle{indextables}{
+    \addcontentsline{toc}{section}{\indextablesname}
+    \listoftables\newpage
+}{}
+
+\iftoggle{indexappendices}{
+    \addcontentsline{toc}{section}{\indexappendicesname}
+    \listofappendices\newpage
+}{}
+
+
+\iftoggle{indexabrev}{
+    \addcontentsline{toc}{section}{\indexabbreviationsname}
+    \section*{\indexabbreviationsname}
+    \subfile{content/acronyms.tex}\newpage
+}{}
+\end{document}

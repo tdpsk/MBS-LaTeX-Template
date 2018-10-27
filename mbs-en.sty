@@ -1,0 +1,114 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mbs-en}[Munich Business School LaTeX Template]
+
+% Basic Page Settings
+\usepackage[a4paper, left=4 cm, right=2.5 cm, top=2.5 cm, bottom=2 cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\setlength{\parindent}{0in} 
+
+% Basic helper packages
+\usepackage{subfiles}
+
+% Text Formatting
+\usepackage{setspace}
+\setstretch{1.5}
+\renewcommand{\footnotesize}{(10pt)}
+\usepackage[skip=2ex]{parskip}
+
+
+% Headings & Sections
+\usepackage{titlesec}
+\titleformat*{\section}{\normalfont\normalsize\bfseries}
+\titleformat*{\subsection}{\normalfont\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries}
+
+% TOC Formatting
+\usepackage[titles]{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Header & Footer Style
+\usepackage{fancyhdr}
+\fancyhf{}                                % Header und Footer "bereinigen"
+\fancyhead[C]{\thepage}                   % Seitennummer oben zentriert zeigen
+\fancypagestyle{plain}{					  % Auch bei Special Seiten, z.B. Inhaltsverzeichnis
+	\fancyhf{}
+	\fancyhead[C]{\thepage}
+}
+\renewcommand{\headrulewidth}{0pt}        % Linie oben entfernen
+\pagestyle{fancy}                         % Auf den eingestellten Page Style setzen
+\setlength{\headheight}{15pt}             % Header-Größe festlegen
+
+% Citing
+\usepackage[
+backend=biber,
+style=apa,
+autocite=inline]{biblatex}
+\DeclareLanguageMapping{english}{english-apa}
+
+% Include figures
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\graphicspath{ {figures/} }
+
+% \customfigure{file name in /figures}{description}{width in factor of page width}{label}
+\newcommand{\customfigure}[5][\empty]{
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=#4\textwidth]{figures/#2} 
+    \caption{\label{fig:#5} #3}
+\end{figure}}
+
+% \nolabelfigure{file name in /figures}{width in factor of page width}
+\newcommand{\nolabelfigure}[3][\empty]{
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=#3\textwidth]{figures/#2} 
+\end{figure}}
+
+% Abbreviations
+% usage: \abbreviation{label} -> needs to be added to content/acronyms.tex first
+\usepackage{acronym}
+\newcommand{\abbreviation}[2][\empty]{
+	\ifindexabrev
+		\ac{#2}
+	\else
+		\PackageWarning{mbs-en}{Abbreviations have been turned off}
+		#2
+	\fi
+}
+
+% Appendices & indices
+\newcommand{\beginappendices}{
+	\setcounter{section}{0}
+	\renewcommand{\thesection}{\Roman{section}}
+}
+\newcommand{\appendices}[1]{
+	\addcontentsline{apc}{appendices}{#1}
+	\section{#1}}
+\newlistof{appendices}{apc}{\indexappendicesname}
+\newcommand{\indexappendicesname}{Index of Appendices}
+\newcommand{\appendicestitle}{Appendix}
+\newcommand{\indexfiguresname}{Index of Figures}
+\newcommand{\indextablesname}{Index of Tables}
+\newcommand{\indexabbreviationsname}{Index of Abbreviations}
+\newcommand{\referencesname}{Reference List}
+\renewcommand{\listfigurename}{\indexfiguresname} 
+\renewcommand{\listtablename}{\indextablesname} 
+
+% Conditional variables
+\usepackage{etoolbox}
+\newtoggle{indexappendices}\toggletrue{indexappendices}
+\newtoggle{indexfigures}\toggletrue{indexfigures}
+\newtoggle{indextables}\toggletrue{indextables}
+\newtoggle{indexabrev}\toggletrue{indexabrev}
+\newtoggle{useabstract}\toggletrue{useabstract}
+\newtoggle{useappendices}\toggletrue{useappendices}
+\newtoggle{usestatutory}\togglefalse{usestatutory}
+
+% Variables
+\newcommand{\lecturer}{Max Mustermann}
+\newcommand{\papertype}{Seminar Paper}
+\newcommand{\course}{Complete designation of Module and Course and semester (e.g. Fall 2016)}
+\newcommand{\address}{}

@@ -1,0 +1,32 @@
+\documentclass[document.tex]{subfiles}
+\begin{document}
+
+% Commands for the basic parameters of the paper. Most of these
+% will be used / displayed on the title page and other parts of
+% the output document. Example values are provided
+\title{Title of the Paper}
+\author{Max Mustermann}
+\date{December 2019}
+\renewcommand{\lecturer}{Lecturer Name}
+\renewcommand{\papertype}{Type of the Paper}
+\renewcommand{\course}{Title of the Course}
+\renewcommand{\address}{Address of Author}
+
+% Conditionals for switching some indices of the template on or off.
+% Note that the corresponding commands (except \abbreviation) will still
+% be available and work as expected, these toggles relate to the indices
+% only. Replace "true" with "false" to switch off.
+\global\toggletrue{indexappendices}
+\global\toggletrue{indexfigures}
+\global\toggletrue{indextables}
+\global\toggletrue{indexabrev}
+
+% Turn on or off the use of an abstract and appendices. Replace "true" 
+% with "false" to turn off. If turned off, the "content/abstract.tex"
+% "content/appendix.tex" files can be safely discarded respectively.
+% If you turn of the appendices, don't forget to also turn off the index
+% of appendices
+\global\toggletrue{useabstract}
+\global\togglefalse{useappendices}
+\global\togglefalse{usestatutory}
+\end{document}

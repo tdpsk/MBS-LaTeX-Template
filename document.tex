@@ -1,0 +1,23 @@
+\documentclass[12pt]{article}
+\usepackage{mbs-en}
+\usepackage{kantlipsum}
+\addbibresource{references.bib}
+
+\begin{document}
+\subfile{content/config.tex}
+\subfile{includes/title.tex}
+
+\iftoggle{useabstract}{
+    \subfile{content/abstract.tex}
+}{}
+\subfile{includes/frontmatter.tex}
+\subfile{content/mainbody.tex}\newpage
+\subfile{includes/reflist.tex}
+\iftoggle{useappendices}{
+    \beginappendices
+    \subfile{content/appendix.tex}\newpage
+}{}
+\iftoggle{usestatutory}{
+    \subfile{includes/statutory.tex}
+}{}
+\end{document}
