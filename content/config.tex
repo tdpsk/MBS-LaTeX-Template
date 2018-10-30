@@ -4,19 +4,19 @@
 % Commands for the basic parameters of the paper. Most of these
 % will be used / displayed on the title page and other parts of
 % the output document. Example values are provided
-\title{Title of the Paper}
-\author{Max Mustermann}
-\date{December 2019}
-\renewcommand{\lecturer}{Lecturer Name} % This will become the academic
+\global\def\mytitle{Title of the Paper}
+\global\def\myauthor{Max Mustermann}
+\global\def\mydate{December 2019}
+\global\def\mylecturer{Lecturer Name} % This will become the academic
                                         % supervisor if the "isthesis"
                                         % flag is set to true
-\renewcommand{\papertype}{Type of the Paper}
-\renewcommand{\course}{Title of the Course}
-\renewcommand{\address}{Address of Author}
+\global\def\papertype{Type of the Paper}
+\global\def\course{Title of the Course}
+\global\def\address{Address of Author}
 
 % The following commands only apply to the thesis type
-\renewcommand{\degree}{Master of Business Administration}
-\renewcommand{\supervisor}{Max Supervisor}
+\global\def\degree{Master of Business Administration}
+\global\def\supervisor{Max Supervisor}
 
 % Conditionals for switching some indices of the template on or off.
 % Note that the corresponding commands (except \abbreviation) will still
@@ -34,7 +34,7 @@
 % of appendices
 \global\toggletrue{useabstract}
 \global\togglefalse{useappendices}
-\global\togglefalse{usestatutory}
+\global\toggletrue{usestatutory}
 \global\toggletrue{isthesis} % if this is set to true, the paper will
                               % be treated as a thesis, which changes
                               % the title page. The following commands
