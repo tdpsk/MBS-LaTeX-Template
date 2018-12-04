@@ -39,6 +39,10 @@
 \pagestyle{fancy}                         % Auf den eingestellten Page Style setzen
 \setlength{\headheight}{15pt}             % Header-Größe festlegen
 
+% Caption style
+\usepackage[format=plain,
+            font=it]{caption}
+
 % Citing
 \usepackage[
 backend=biber,
@@ -65,7 +69,8 @@ autocite=inline]{biblatex}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=#4\textwidth]{figures/#2}
-    \caption{\label{fig:#5} #3}
+  \caption{#3}
+	\label{fig:#5}
 \end{figure}}
 
 % \nolabelfigure{file name in /figures}{width in factor of page width}
@@ -81,7 +86,8 @@ autocite=inline]{biblatex}
 \newcommand{\abbreviation}[2][\empty]{
 	\iftoggle{indexabrev}{\ac{#2}}{
 		\PackageWarning{mbs-en}{Abbreviations have been turned off}
-		#2}
+		#2
+	}
 }
 
 % Appendices & indices
