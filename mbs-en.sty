@@ -6,7 +6,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{mathptmx}
 \usepackage[T1]{fontenc}
-\setlength{\parindent}{0in} 
+\setlength{\parindent}{0in}
 
 % Basic helper packages
 \usepackage{subfiles}
@@ -56,7 +56,7 @@ autocite=inline]{biblatex}
 \newcommand{\customfigure}[5][\empty]{
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=#4\textwidth]{figures/#2} 
+	\includegraphics[width=#4\textwidth]{figures/#2}
     \caption{\label{fig:#5} #3}
 \end{figure}}
 
@@ -64,19 +64,16 @@ autocite=inline]{biblatex}
 \newcommand{\nolabelfigure}[3][\empty]{
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=#3\textwidth]{figures/#2} 
+	\includegraphics[width=#3\textwidth]{figures/#2}
 \end{figure}}
 
 % Abbreviations
 % usage: \abbreviation{label} -> needs to be added to content/acronyms.tex first
 \usepackage{acronym}
 \newcommand{\abbreviation}[2][\empty]{
-	\ifindexabrev
-		\ac{#2}
-	\else
+	\iftoggle{indexabrev}{\ac{#2}}{
 		\PackageWarning{mbs-en}{Abbreviations have been turned off}
-		#2
-	\fi
+		#2}
 }
 
 % Appendices & indices
@@ -94,8 +91,8 @@ autocite=inline]{biblatex}
 \newcommand{\indextablesname}{Index of Tables}
 \newcommand{\indexabbreviationsname}{Index of Abbreviations}
 \newcommand{\referencesname}{Reference List}
-\renewcommand{\listfigurename}{\indexfiguresname} 
-\renewcommand{\listtablename}{\indextablesname} 
+\renewcommand{\listfigurename}{\indexfiguresname}
+\renewcommand{\listtablename}{\indextablesname}
 \newcommand{\statutorytitle}{Statutory Declaration}
 
 % Conditional variables
